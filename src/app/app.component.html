@@ -2,11 +2,9 @@
 <div style="text-align:center">
   
    </div>
- <h2>Here are some links to help you start: {{home_devices.device_name}}</h2>
  <ul>
    <li class="text" style="display:unset" *ngFor="let item of items | async">
-     
-         {{home_devices.device_name}}
+         {{ devices | json }}
        </li>
  </ul>
  
