@@ -3,9 +3,17 @@
   
    </div>
  <ul>
-   <li class="text" style="display:unset" *ngFor="let item of items | async">
-         {{ devices | json }}
-       </li>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let device of home_devices | async">
+          <section class="device-switch-section">
+            <mat-slide-toggle class="device-switch-margin" (change)="deviceSwitch($event, device)" [checked]="device.is_on">
+              {{ device.device_name }}
+            </mat-slide-toggle>
+          </section>
+        </mat-list-item>
+      </mat-nav-list>
+
+      <!-- <ui-switch (change)="deviceSwitch($event)"></ui-switch><br> -->
  </ul>
  
  

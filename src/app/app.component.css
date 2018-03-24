@@ -1,0 +1,10 @@
+device-switch-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .device-switch-margin {
+    margin: 10px;
+  }
