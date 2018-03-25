@@ -4,6 +4,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Action } from 'rxjs/scheduler/Action';
+
+export interface Device {
+  device_name: String;
+  device_pin: Number;
+  is_on: Boolean;
+}
+
+export interface DeviceId extends Device {
+  id: String;
+}
 
 @Component({
   selector: 'app-root',
@@ -12,27 +23,27 @@ import { AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfir
 })
 
 export class AppComponent {
+  private deviceCollection: AngularFirestoreCollection<Device>;
+  devices: Observable<DeviceId[]>;
   user: Observable<firebase.User>;
-  home_devices: Observable<any[]>;
   color = 'green';
-  checked: number = 1;
-  disabled = false;
-  db: AngularFirestore;
   constructor(public afAuth: AngularFireAuth, db: AngularFirestore) {
-      this.db = db;
       this.afAuth.auth.signInAnonymously();
       this.user = this.afAuth.authState;
-      this.home_devices = db.collection('home_devices').valueChanges();
+      this.deviceCollection = db.collection<Device>('home_devices');
+      this.devices = this.deviceCollection.snapshotChanges().map(actions => {
+          return actions.map(a => {
+              const data = a.payload.doc.data() as Device;
+              const id = a.payload.doc.id;
+              return {id, ...data};
+          });
+      });
     }
-    deviceSwitch(value, device) {
-        if (value === true) {
-          this.checked = 1;
-          this.db.collection('home_device').doc(device.id).update({is_on : value.checked});
-          console.log(device);
-        } else {
-          this.checked = 0;
-          this.db.collection('home_device').doc(device.id).update({is_on : value.checked});
-          console.log(device);
+    deviceSwitch(device) {
+        if (device.is_on === true) {
+          this.deviceCollection.doc(device.id).update({is_on : false});
+          } else {
+          this.deviceCollection.doc(device.id).update({is_on : true});
         }
     }
 }
