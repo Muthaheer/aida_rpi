@@ -9,7 +9,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationFactory } from '@angular/platform-browser/animations/src/animation_builder';
-import {MatButtonModule, MatListModule, MatSlideToggle, MatSlideToggleModule} from '@angular/material';
+import {MatButtonModule, MatListModule, MatSlideToggle, MatSlideToggleModule, MatIconModule, MatToolbarModule} from '@angular/material';
+import {MatMenuModule, MatCardModule} from '@angular/material';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,11 @@ import {MatButtonModule, MatListModule, MatSlideToggle, MatSlideToggleModule} fr
     MatButtonModule,
     MatListModule,
     MatSlideToggleModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatCardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

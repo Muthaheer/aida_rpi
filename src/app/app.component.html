@@ -1,19 +1,32 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  
-   </div>
- <ul>
-      <mat-nav-list>
-        <mat-list-item *ngFor="let device of devices | async">
-          <section class="device-switch-section">
-            <mat-slide-toggle class="device-switch-margin" (change)="deviceSwitch(device)" [checked]="device.is_on">
-              {{ device.device_name }}
-            </mat-slide-toggle>
-          </section>
-        </mat-list-item>
-      </mat-nav-list>
+<div>
+    <mat-toolbar color="primary">
+      
+      <span>AIDA - Artifically Intelligent Digital Assistant</span>
 
-      <!-- <ui-switch (change)="deviceSwitch($event)"></ui-switch><br> -->
- </ul>
+    </mat-toolbar>
+  
+    <mat-card>
+        <ul>
+            <mat-nav-list>
+              <mat-list-item *ngFor="let device of devices | async">
+                <section class="device-switch-section">
+                  <mat-slide-toggle class="device-switch-margin" (change)="deviceSwitch(device)" [checked]="device.is_on" color="warn">
+                    {{ device.device_name }}
+                  </mat-slide-toggle>
+                </section>
+              </mat-list-item>
+            </mat-nav-list>
+       </ul>
+    </mat-card>
+  
+    <span class="done">
+      <button mat-fab>
+        <mat-icon>check circle</mat-icon>
+      </button>
+    </span>
+  </div>
+      
+ 
  
  
