@@ -6,7 +6,6 @@ import { FirebaseConfig } from '../environments/firebase.config';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {UiSwitchModule} from 'angular2-ui-switch';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationFactory } from '@angular/platform-browser/animations/src/animation_builder';
@@ -26,7 +25,6 @@ import {MatButtonModule, MatListModule, MatSlideToggle, MatSlideToggleModule} fr
     MatButtonModule,
     MatListModule,
     MatSlideToggleModule,
-    UiSwitchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
