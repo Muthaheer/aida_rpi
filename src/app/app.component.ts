@@ -40,35 +40,12 @@ export class AppComponent {
           });
       });
     }
+
     deviceSwitch(device) {
         if (device.is_on === true) {
           this.deviceCollection.doc(device.id).update({is_on : false});
-          const req = this.http.post('http://192.168.0.104:5000/devices', {
-            'device_pin' : 18,
-            'is_on' : false
-          })
-          .subscribe(
-            res => {
-              console.log(res);
-            },
-            err => {
-              console.log(err);
-            }
-          );
           } else {
           this.deviceCollection.doc(device.id).update({is_on : true});
-          const req = this.http.post('http://192.168.0.104:5000/devices', {
-            'device_pin' : 18,
-            'is_on' : true
-          })
-          .subscribe(
-            res => {
-              console.log(res);
-            },
-            err => {
-              console.log(err);
-            }
-          );
         }
     }
 }

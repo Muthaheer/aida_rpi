@@ -11,6 +11,7 @@
             <mat-nav-list>
               <mat-list-item *ngFor="let device of devices | async">
                 <section class="device-switch-section">
+                  
                   <mat-slide-toggle class="device-switch-margin" (change)="deviceSwitch(device)" [checked]="device.is_on" color="warn">
                     {{ device.device_name }}
                   </mat-slide-toggle>
