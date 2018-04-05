@@ -6,6 +6,8 @@ import * as firebase from 'firebase/app';
 import { AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Action } from 'rxjs/scheduler/Action';
 import { HttpClient } from '@angular/common/http';
+import { WeatherSettings, TemperatureScale, ForecastMode, WeatherLayout } from 'angular-weather-widget';
+import { CurrentWeather } from 'angular-weather-widget/services/api/weather.api.service';
 
 export interface Device {
   device_name: String;
@@ -40,6 +42,22 @@ export class AppComponent {
           });
       });
     }
+    settings: WeatherSettings = {
+      location: {
+        cityName: 'Udupi'
+      },
+      backgroundColor: '#347c57',
+      color: '#ffffff',
+      width: 'auto',
+      height: 'auto',
+      showWind: true,
+      scale: TemperatureScale.CELCIUS,
+      forecastMode: ForecastMode.DETAILED,
+      showDetails: true,
+      showForecast: true,
+      layout: WeatherLayout.NARROW,
+      language: 'en'
+    };
 
     deviceSwitch(device) {
         if (device.is_on === true) {

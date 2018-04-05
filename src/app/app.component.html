@@ -5,23 +5,28 @@
       <span>AIDA - Artifically Intelligent Digital Assistant</span>
 
     </mat-toolbar>
-  
     <mat-card>
-        <ul>
-            <mat-nav-list>
-              <mat-list-item *ngFor="let device of devices | async">
-                <section class="device-switch-section">
-                  
-                  <mat-slide-toggle class="device-switch-margin" (change)="deviceSwitch(device)" [checked]="device.is_on" color="warn">
-                    {{ device.device_name }}
-                  </mat-slide-toggle>
-                </section>
-              </mat-list-item>
-            </mat-nav-list>
-       </ul>
+        <mat-grid-list [cols]="2"> 
+            <mat-grid-tile >
+                    <ul>
+                        <mat-nav-list>
+                          <mat-list-item *ngFor="let device of devices | async">
+                            <section class="device-switch-section">
+                              
+                              <mat-slide-toggle class="device-switch-margin" (change)="deviceSwitch(device)" [checked]="device.is_on" color="warn">
+                                <h3>{{ device.device_name }}</h3>
+                              </mat-slide-toggle>
+                            </section>
+                          </mat-list-item>
+                        </mat-nav-list>
+                   </ul>
+            </mat-grid-tile>
+            <mat-grid-tile >
+              <weather-widget [settings]="settings"></weather-widget>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-card>
-  
-    <span class="done">
+   <span class="done">
       <button mat-fab>
         <mat-icon>check circle</mat-icon>
       </button>

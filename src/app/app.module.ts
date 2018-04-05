@@ -10,9 +10,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BrowserAnimationFactory } from '@angular/platform-browser/animations/src/animation_builder';
 import {MatButtonModule, MatListModule, MatSlideToggle, MatSlideToggleModule, MatIconModule, MatToolbarModule} from '@angular/material';
-import {MatMenuModule, MatCardModule} from '@angular/material';
-
+import {MatMenuModule, MatCardModule, MatGridListModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularWeatherWidgetModule, WeatherApiName } from 'angular-weather-widget';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     MatCardModule,
     HttpClientModule,
+    MatGridListModule,
+    AngularWeatherWidgetModule.forRoot({
+      key: '74692a33a089fa888a0fb43275b2632b',
+      name: WeatherApiName.OPEN_WEATHER_MAP,
+      baseUrl: 'http://api.openweathermap.org/data/2.5/weather?id=1253952'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
